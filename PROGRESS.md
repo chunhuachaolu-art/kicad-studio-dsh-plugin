@@ -16,10 +16,22 @@
   - 文档：README.md / README.zh.md / LICENSE（MIT）/ NOTICE（fxp 插件 vendored 归属、KiCad GPL、依赖许可）。
   - 冒烟：scripts/smoke_tools.py（零 LLM，stdio JSON-RPC：initialize → tools/list 快照落盘 → pcb_spec_example → kicad_check_spec_file，后者实走 F:\kicad 库解析，验证 Windows 路径补丁）。
 
+## 2026-11-23 冒烟结果（全过，零 LLM）
+
+- venv：fastmcp 4.2.4 + pydantic + numpy 装机成功；`kicad-studio-server.exe` 入口生成。
+- tools/list：**25 工具**全量注册（pcb_* 7 + kicad_* 18），快照 `out/smoke/tools_list.json` sha256 前 16 位 `d6589117a10ec746`。
+- `pcb_spec_example`：ne555_blinker spec 落盘工作区 ✓
+- `kicad_check_spec_file`：走 `F:\kicad` 真实符号库校验，0 错误 0 警告，引脚表真实返回 ✓（Windows 路径补丁实测生效）
+- `pcb_build` 真板全流程：**DRC 0 错误 / 0 警告 / 0 未连通**（KiCad 10.0.5），板 `ne555_blinker.kicad_pcb` ✓
+- `pcb_render` ✓；`kicad_checks` drc.passed=true ✓；`pcb_export_fab` 产出 gerber_zip + kicad_project.zip + bom.csv + pos.csv ✓
+- dsh 本地安装：`dsh plugin --profile studio-test add <本仓库>` 成功（pnpm link），`dsh --profile studio-test --dump-config` 可见本插件 bundle 层与 mcp-kicad MCP 块 ✓（scratch profile，未动用户 web profile）
+
 ## 待办 / 门
 
-- [ ] venv 依赖安装完成（fastmcp/pydantic/numpy；PyPI 直连或代理）。
-- [ ] 冒烟通过：tools/list 快照 + sha256、spec example、库校验真实输出。
-- [ ] （可选加强）pcb_build 真板冒烟：小板全流程（建板→DRC→导出）。
-- [ ] dsh 本地安装验证（`dsh plugin --profile web add <本地路径>` + --dump-config 可见）——零 LLM 面。
-- [ ] 发布材料终审、npm/GitHub 发布 = 用户门。
+- [x] venv 依赖安装完成（fastmcp/pydantic/numpy）。
+- [x] 冒烟通过：tools/list 快照 + sha256、spec example、库校验真实输出。
+- [x] pcb_build 真板冒烟：建板→DRC→渲染→checks→fab 导出全过。
+- [x] dsh 本地安装验证（scratch profile studio-test + --dump-config 可见）。
+- [ ] 用户侧 dsh 全链路对话测试（需模型 key，用户自做，参照 bridge 先例）。
+- [ ] 发布材料终审、GitHub 推送 / npm publish / 插件市场上架 = 用户门（本仓仅本地 commit 55c0269，未推送）。
+- [ ] 可选：把 skills/kicad-board/SKILL.md 改写为 dsh 侧 agent 指南（dsh 插件暂无 skill 挂载位，先以 README 工具流程代替）。
