@@ -33,5 +33,7 @@
 - [x] pcb_build 真板冒烟：建板→DRC→渲染→checks→fab 导出全过。
 - [x] dsh 本地安装验证（scratch profile studio-test + --dump-config 可见）。
 - [ ] 用户侧 dsh 全链路对话测试（需模型 key，用户自做，参照 bridge 先例）。
-- [ ] 发布材料终审、GitHub 推送 / npm publish / 插件市场上架 = 用户门（本仓仅本地 commit 55c0269，未推送）。
+- [x] GitHub 推送（2026-11-23 用户令"1做一下"）：`github.com/chunhuachaolu-art/kicad-studio-dsh-plugin` public，main 已推（55c0269+518a00f）。
+- [ ] npm publish：包名 `kicad-studio-dsh-plugin` 未被占用（registry 404 实测）、`npm pack` 预检 6 文件 12.9kB（shasum 1aaac833…）就绪；**卡在 npm 未登录（ENEEDAUTH）**——发布需用户本人 `npm login`（浏览器 OTP）后执行 `npm publish`，或自行往 .npmrc 放 token。
+- [ ] 插件市场上架 / awesome PR = 另行用户门。
 - [ ] 可选：把 skills/kicad-board/SKILL.md 改写为 dsh 侧 agent 指南（dsh 插件暂无 skill 挂载位，先以 README 工具流程代替）。
