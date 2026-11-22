@@ -1,0 +1,24 @@
+NOTICE — third-party components
+================================
+
+kicad-studio-dsh-plugin (this repository)
+  Copyright (c) 2026 chunhuachaolu-art — MIT License.
+
+Vendored Python MCP server (server/py/src/kicad_studio/**, including the kicad/
+worker package and panel.html)
+  Vendored from the ZCode official "kicad" plugin, version 0.6.1, dist/py.
+  Copyright (c) 冯小平 (https://github.com/fxp) — MIT License.
+  Local modifications: Windows kicad-cli / bundled-Python / library-path
+  resolution in kicad/paths.py, relative imports and package restructure,
+  panel.html served from the package directory.
+
+KiCad
+  Not distributed with this plugin. Used through your local KiCad 10 install
+  (kicad-cli, bundled Python/pcbnew, official symbol/footprint/3D libraries).
+  KiCad is GPL-3.0-or-later; its libraries are CC-BY-SA-4.0 with exceptions.
+
+Python dependencies (installed at runtime by pip)
+  fastmcp (Apache-2.0), pydantic (MIT), numpy (BSD-3-Clause).
+
+MCP client
+  @deepseek-ai/dsh-mcp-client — DeepSeek AI, see its package license.

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kicad-studio-server"
+version = "0.6.1"
+description = "KiCad 10 board-design MCP server (Python worker of the ZCode kicad plugin, repackaged for DeepSeek Harness)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "chunhuachaolu-art" }]
+dependencies = [
+    "fastmcp>=4,<5",
+    "pydantic>=2,<3",
+    "numpy>=2,<3",
+]
+
+[project.scripts]
+kicad-studio-server = "kicad_studio.kicad_server:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+kicad_studio = ["panel.html"]

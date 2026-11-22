@@ -1,0 +1,48 @@
+{
+  "name": "kicad-studio-dsh-plugin",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness plugin exposing the KiCad 10 board-design pipeline (spec -> build -> autoroute -> DRC -> Gerber/BOM/CPL/GLB) as mcp__kicad__* tools, powered by the vendored ZCode kicad plugin Python worker.",
+  "license": "MIT",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "mcp",
+    "kicad",
+    "pcb",
+    "eda",
+    "electronics",
+    "drc",
+    "gerber",
+    "bom"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunhuachaolu-art/kicad-studio-dsh-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chunhuachaolu-art/kicad-studio-dsh-plugin/issues"
+  },
+  "dependencies": {
+    "@deepseek-ai/dsh-mcp-client": "0.2.1-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

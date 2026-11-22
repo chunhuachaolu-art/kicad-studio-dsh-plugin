@@ -1,0 +1,21 @@
+- insert:
+    - id: "mcp-kicad"
+      name: "@deepseek-ai/dsh-mcp-client"
+      config:
+        serverName: "kicad"
+        transport: "stdio"
+        command: !!js process.env.KICAD_STUDIO_CMD ?? "kicad-studio-server"
+        env:
+          PYTHONUTF8: "1"
+          PYTHONUNBUFFERED: "1"
+          ZCODE_KICAD_APP: !!js process.env.ZCODE_KICAD_APP ?? ""
+          ZCODE_KICAD_CLI: !!js process.env.ZCODE_KICAD_CLI ?? ""
+          ZCODE_WORKSPACE_ROOT: !!js process.env.KICAD_STUDIO_WORKSPACE ?? ""
+          ZCODE_PLUGIN_DATA: !!js process.env.KICAD_STUDIO_DATA ?? ""
+        failOnStartupError: false
+        toolCallTimeoutMs: 600000
+        reconnect:
+          enabled: true
+          initialDelayMs: 500
+          maxDelayMs: 30000
+          maxAttempts: 10
