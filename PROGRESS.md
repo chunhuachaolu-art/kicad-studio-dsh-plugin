@@ -34,6 +34,8 @@
 - [x] dsh 本地安装验证（scratch profile studio-test + --dump-config 可见）。
 - [ ] 用户侧 dsh 全链路对话测试（需模型 key，用户自做，参照 bridge 先例）。
 - [x] GitHub 推送（2026-11-23 用户令"1做一下"）：`github.com/chunhuachaolu-art/kicad-studio-dsh-plugin` public，main 已推（55c0269+518a00f）。
-- [ ] npm publish：包名 `kicad-studio-dsh-plugin` 未被占用（registry 404 实测）、`npm pack` 预检 6 文件 12.9kB（shasum 1aaac833…）就绪；**卡在 npm 未登录（ENEEDAUTH）**——发布需用户本人 `npm login`（浏览器 OTP）后执行 `npm publish`，或自行往 .npmrc 放 token。
+- [x] npm publish（2026-11-23）：`kicad-studio-dsh-plugin@0.1.0` 已上线（registry 实测 version/latest=0.1.0）。过程要点：账号 zdqrbq 为当日新注册、npm 强制 2FA（auth-and-writes）；用户 2FA 是安全钥匙（passkey），CLI 无法 OTP → 走 granular token + Bypass 2FA；第一个 token 没勾豁免（EOTP/404）、第二个 token 首次复制无效（E401）、重配后发布成功。`.npmrc` 现存有效 token 由用户自配。
+- [ ] token 卫生：第一个 7 天 token（已在对话中出现过）建议 revoke 或等其自然过期；当前 .npmrc 里的 token 可留作后续发版。
+- [ ] 插件市场上架 / awesome PR = 另行用户门。
 - [ ] 插件市场上架 / awesome PR = 另行用户门。
 - [ ] 可选：把 skills/kicad-board/SKILL.md 改写为 dsh 侧 agent 指南（dsh 插件暂无 skill 挂载位，先以 README 工具流程代替）。
